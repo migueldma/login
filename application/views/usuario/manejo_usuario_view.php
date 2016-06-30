@@ -16,6 +16,9 @@
     <div class="container">
       <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+            <div>
+              <h1 class="h1Usuario"><?php echo $titulo; ?></h1>
+            </div>
             <div class="logincontenedor">              
               <?php  echo form_open('usuario/manejo_usuario'); ?>
               <input type="hidden" name="idUsuario" value="<?php if(isset($idUsuario)) echo $idUsuario;?>">

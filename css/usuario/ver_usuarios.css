@@ -1,4 +1,4 @@
-.logincontenedor {
+.listaUsuariosContenedor {
 	background-color: #ECECEC;
 	padding: 30px 30px 30px 30px;
 	margin-top: 25%;
@@ -10,4 +10,13 @@
 }
 .h1Usuario{
 	text-align: center;
+}
+
+.listaBotones{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.tableListaUsuarios{
+	background-color: white;
 }

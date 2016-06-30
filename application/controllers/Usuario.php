@@ -3,6 +3,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
 
+	public function ver_usuarios(){
+		$this->load->helper('url');
+		$this->load->model('usuario_model');
+		$this->load->library('table');
+
+		$data['usuarios'] = $this->usuario_model->get_usuarios();
+		$this->load->view('/usuario/ver_usuarios',$data);
+	}
+
+	public function eliminar_usuario($idUsuario){
+		$this->load->model('usuario_model');
+		$this->load->helper('url');
+		if($this->usuario_model->eliminar_usuario($idUsuario)){
+			redirect('/usuario/ver_usuarios', 'refresh');
+		}
+
+	}
+
 	public function manejo_usuario($idUsuario = '')
 	{	
 		$this->load->helper('url');
@@ -58,12 +76,12 @@ class Usuario extends CI_Controller {
         		$datosUsuarios['status'] = $this->input->post('selectStatus');
         	if(trim($idUsuario) == ''){
 				if($this->usuario_model->crear_usuario($datosUsuarios)){
-					$this->load->view('welcome_message',$datosUsuarios);
+					redirect('/usuario/ver_usuarios', 'refresh');
 				}
         	}
         	else{
         		if($this->usuario_model->editar_usuario($idUsuario,$datosUsuarios)){
-					$this->load->view('welcome_message',$datosUsuarios);
+					redirect('/usuario/ver_usuarios', 'refresh');
 				}	
         	}           
         }

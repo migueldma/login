@@ -5,6 +5,31 @@ class Usuario_model extends CI_Model {
     {
         $this->load->database();
     }
+    public function get_usuarios(){
+    	$sql = "SELECT * FROM Usuarios ";
+		$query = $this->db->query($sql);
+		$usuarios = array();
+		foreach ($query->result() as $row)
+		{
+			$usuario = array();
+			$usuario['idUsuario'] = $row->idUsuario;
+	        $usuario['usuario'] = $row->usuario;
+	        $usuario['credenciales'] = $row->credenciales;
+	        $usuario['administradorGlobal'] = $row->administradorGlobal;
+	        $usuario['administradorBancas'] = $row->administradorBancas;
+	        $usuario['administradorPuntoVentas']= $row->administradorPuntoVentas;
+	        $usuario['puntodeventa'] = $row->puntodeventa;
+	        $usuario['status'] = $row->status;
+			$usuarios[] = $usuario;
+		}
+		return $usuarios;
+    }
+    public function eliminar_usuario($idUsuario){
+    	if(trim($idUsuario) != ''){
+    		return $this->db->delete('Usuarios', array('idUsuario' => $idUsuario)); 
+    	}
+    	return false;
+    }
     public function obtener_usuario_password($usuario){
     	if(trim($usuario) != ''){
     		$sql = "SELECT credenciales FROM Usuarios WHERE usuario = ? LIMIT 1";
@@ -28,8 +53,9 @@ class Usuario_model extends CI_Model {
     		'puntodeventa'=> $datos['puntodeventa'],
     		'status' => $datos['status']
     		);
-
-		return $this->db->update('Usuarios', $data);
+    	$this->db->set($data);
+    	$this->db->where('idUsuario', $idUsuario);
+		return $this->db->update('Usuarios');
     }
     public function get_usuario($idUsuario)
     {

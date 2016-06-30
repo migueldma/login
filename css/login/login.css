@@ -1,0 +1,10 @@
+.logincontenedor {
+	background-color: #ECECEC;
+	padding: 30px 30px 30px 30px;
+	margin-top: 25%;
+	border-radius: 12px;
+}
+
+.contenedorError {
+	padding-top: 30px;
+}

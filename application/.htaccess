@@ -1,0 +1,11 @@
+accepted
+	
+
+You need to change your .htaccess file so that it no longer rewrites requests made to '/assets'.
+
+In other words, you need your .htaccess file to ignore requests to the 'assets' folder and just let the browser load the url as provided. Try this:
+
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|third_party|robots\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
+

@@ -8,7 +8,8 @@ class Login extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->model('usuario_model');		
+		$this->load->model('usuario_model');
+		$this->load->library('session');		
 
 		$this->form_validation->set_rules('inputUsuario', 'Usuario', 'required',array('required' => 'Campo de Usuario necesario.'));
 		$this->form_validation->set_rules('inputPassword', 'Password', 'required',array('required' => 'Campo de Password necesario.'));
@@ -21,9 +22,13 @@ class Login extends CI_Controller {
         {
     		$usuario = $this->input->post('inputUsuario');
 			$password = $this->input->post('inputPassword');
-			$bdPassword = $this->usuario_model->obtener_usuario_password($usuario);
-            if($bdPassword == $this->convertir_password_seguro($password)){
-            	$this->load->view('/usuario/manejo_usuario_view');
+			$datosUsuario = $this->usuario_model->get_usuario_por_usuario($usuario);
+			
+			$bdPassword = isset($datosUsuario['credenciales'])?$datosUsuario['credenciales']:'';
+			if($bdPassword == $this->convertir_password_seguro($password)){
+            	//unset($datosUsuario['credenciales']);
+            	$this->session->set_userdata($datosUsuario);            	
+            	redirect('/usuario/ver_usuarios', 'refresh');
             }            	
             else{
             	$data['error'] = 'Usuario o Password incorrectos.';

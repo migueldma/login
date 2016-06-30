@@ -2,6 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario extends CI_Controller {
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+        $this->load->helper('url');
+        if(!$this->session->userdata('idUsuario'))
+        	redirect('/login/index', 'refresh');
+    }
 
 	public function ver_usuarios(){
 		$this->load->helper('url');

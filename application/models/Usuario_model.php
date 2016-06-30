@@ -24,6 +24,23 @@ class Usuario_model extends CI_Model {
 		}
 		return $usuarios;
     }
+    public function get_usuario_por_usuario($usuario){
+    	$sql = "SELECT * FROM Usuarios WHERE usuario = ? LIMIT 1";
+		$query = $this->db->query($sql, array($usuario));
+		$usuario = array();
+		foreach ($query->result() as $row)
+		{
+			$usuario['idUsuario'] = $row->idUsuario;
+	        $usuario['usuario'] = $row->usuario;
+	        $usuario['credenciales'] = $row->credenciales;
+	        $usuario['administradorGlobal'] = $row->administradorGlobal;
+	        $usuario['administradorBancas'] = $row->administradorBancas;
+	        $usuario['administradorPuntoVentas']= $row->administradorPuntoVentas;
+	        $usuario['puntodeventa'] = $row->puntodeventa;
+	        $usuario['status'] = $row->status;			
+		}
+		return $usuario;
+    }
     public function eliminar_usuario($idUsuario){
     	if(trim($idUsuario) != ''){
     		return $this->db->delete('Usuarios', array('idUsuario' => $idUsuario)); 

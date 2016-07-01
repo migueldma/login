@@ -1,4 +1,3 @@
-<?php date_default_timezone_set('America/Santo_Domingo'); ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>

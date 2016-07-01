@@ -6,7 +6,7 @@ class Usuario_model extends CI_Model {
         $this->load->database();
     }
     public function get_usuarios(){
-    	$sql = "SELECT * FROM Usuarios1 ";
+    	$sql = "SELECT * FROM Usuarios ";
 		$query = $this->db->query($sql);
 		$usuarios = array();
 		foreach ($query->result() as $row)
@@ -25,7 +25,7 @@ class Usuario_model extends CI_Model {
 		return $usuarios;
     }
     public function get_usuario_por_usuario($usuario){
-    	$sql = "SELECT * FROM Usuarios1 WHERE usuario = ? LIMIT 1";
+    	$sql = "SELECT * FROM Usuarios WHERE usuario = ? LIMIT 1";
 		$query = $this->db->query($sql, array($usuario));
 		$usuario = array();
 		foreach ($query->result() as $row)
@@ -43,13 +43,13 @@ class Usuario_model extends CI_Model {
     }
     public function eliminar_usuario($idUsuario){
     	if(trim($idUsuario) != ''){
-    		return $this->db->delete('Usuarios1', array('idUsuario' => $idUsuario)); 
+    		return $this->db->delete('Usuarios', array('idUsuario' => $idUsuario)); 
     	}
     	return false;
     }
     public function obtener_usuario_password($usuario){
     	if(trim($usuario) != ''){
-    		$sql = "SELECT credenciales FROM Usuarios1 WHERE usuario = ? LIMIT 1";
+    		$sql = "SELECT credenciales FROM Usuarios WHERE usuario = ? LIMIT 1";
 			$query = $this->db->query($sql, array($usuario));
 			$credenciales = '';
 			foreach ($query->result() as $row)
@@ -72,11 +72,11 @@ class Usuario_model extends CI_Model {
     		);
     	$this->db->set($data);
     	$this->db->where('idUsuario', $idUsuario);
-		return $this->db->update('Usuarios1');
+		return $this->db->update('Usuarios');
     }
     public function get_usuario($idUsuario)
     {
-    	$query = $this->db->get_where('Usuarios1', array('idUsuario' => $idUsuario), 1);
+    	$query = $this->db->get_where('Usuarios', array('idUsuario' => $idUsuario), 1);
     	$datos = FALSE;
 		foreach ($query->result() as $row)
 		{
@@ -101,6 +101,6 @@ class Usuario_model extends CI_Model {
     		'status' => $datos['status']
     		);
 
-    	return $this->db->insert('Usuarios1', $data);
+    	return $this->db->insert('Usuarios', $data);
     }
 }

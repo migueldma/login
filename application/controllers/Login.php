@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 			if($bdPassword == $this->convertir_password_seguro($password)){
             	//unset($datosUsuario['credenciales']);
             	$this->session->set_userdata($datosUsuario);            	
-            	redirect('/usuario/ver_usuarios', 'refresh');
+            	redirect('/principal/', 'refresh');
             }            	
             else{
             	$data['error'] = 'Usuario o Password incorrectos.';
@@ -36,6 +36,15 @@ class Login extends CI_Controller {
             }
         }
 	}
+
+	public function salir() {
+		$this->load->helper('url');
+		$this->load->library('session');
+		$this->session->sess_destroy();
+		redirect('/login/index', 'refresh');
+	}
+
+
 	private function convertir_password_seguro($password){
 		if(trim($password) != ''){
 			return hash('sha512', $password);

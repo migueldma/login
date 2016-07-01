@@ -1,0 +1,238 @@
+@import "bootstrap-compass";
+@import "bootstrap-variables";
+@import "bootstrap";
+
+//Project global configuration file
+@import "global";
+//Mixxin
+@import "mixxin";
+
+$color-header: #224f8e;
+$color-venta-tickets: #417505;
+$color-pago-ganadores: #4a90e2;
+$color-numpad: #4a90e2;
+$color-numpad-hover: #4A87D9;
+$color-detalles: #f3f3f3;
+$color-title: #F37B20;
+$color-black-light: #4a4a4a;
+$color-gray: #9B9BA7;
+
+$numpad_keys_size: 71px;
+$elements_space: 21px;
+
+body {
+  font-size: 100%;
+}
+
+header {
+  background: $color-header;
+  padding: 2.6% 17.1%;
+  p, a {
+    &, &:hover, &:focus, &:active {
+      color: white;
+    }
+  }
+  p {
+    font-size: 1.6em;
+    margin: 0;
+    a {
+      text-decoration: underline;
+      padding-left: 4px;
+    }
+  }
+}
+main {
+  #proceso {
+    .nav-tabs {
+      border: 0;
+      li {
+        width: 50%;
+        padding: 0;
+        text-align: center;
+        a {
+          font-size: 3.6em;
+          margin: 0;
+          border: 0;
+          border-radius: 0;
+          padding: 20px 0;
+          &, &:hover {
+            color: white;
+          }
+          &#venta-tickets-tab {
+            background: $color-venta-tickets;
+          }
+          &#pago-ganadores-tab {
+            background: $color-pago-ganadores;
+          }
+        }
+      }
+    }
+  }
+  #detalles {
+    background: $color-detalles;
+    padding-top: $elements_space;
+    margin: $elements_space 0;
+    #numpad {
+      $keys_per_row: 4;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      width: ($numpad_keys_size * $keys_per_row) + ($elements_space * ($keys_per_row - 1));
+      float: right;
+      li.key-container {
+        display: inline-block;
+        float: left;
+        margin-left: $elements_space;
+        margin-bottom: $elements_space;
+        &.first-in-row {
+          margin-left: 0;
+        }
+        a.key {
+          font-size: 3em;
+          display: inline-block;
+          cursor: pointer;
+          background: $color-numpad;
+          color: white;
+          height: $numpad_keys_size;
+          width: $numpad_keys_size;
+          line-height: $numpad_keys_size;
+          text-align: center;
+          &:hover, &:focus, &:active {
+            text-decoration: none;
+            background: $color-numpad-hover;
+          }
+        }
+      }
+    }
+    .detalles-loteria {
+      margin-top: 2 * ($numpad_keys_size / 3);
+      display: inline-block;
+      .detalle {
+        border-top: 3px dashed $color-black-light;
+        padding: $elements_space 0;
+        p {
+          color: $color-black-light;
+          font-size: 3em;
+          margin: 0 0 5px;
+        }
+      }
+    }
+  }
+  #inputs {
+    #termination {
+      width: 100%;
+      .input-button{
+        float: left;
+        width: 33.33%;
+        margin: 0;
+        padding: 0 ($elements_space/3);
+        &:first-of-type {
+          padding-left: 0;
+          padding-right: 2*($elements_space/3);
+        }
+        &:last-of-type {
+          padding-right: 0;
+          padding-left: 2*($elements_space/3);
+        }
+        a {
+          width: 100%;
+          font-size: 2.6em;
+          border-radius: 0;
+          padding: 40px 0;
+        }
+      }
+    }
+  }
+  #jugadas {
+    table {
+      input[type="text"] {
+        visibility: hidden;
+        &.show {
+          visibility: visible;
+        }
+      }
+      thead {
+        tr {
+          th {
+            border: 0;
+            span {
+              color: $color-title;
+              font-size: 2em;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          &.odd {
+            background: $color-detalles;
+          }
+          td {
+            border: 0;
+            padding: 20px 10px;
+            vertical-align: middle;
+            .row-number {
+              font-size: 2em;
+              padding: 0 20px;
+            }
+            .newRow {
+              color: $color-gray;
+              font-size: 3em;
+            }
+          }
+          &:first-of-type {
+            td.first-td {
+              position: relative;
+              #lotteryTip {
+                color: $color-gray;
+                position: absolute;
+                left: 100%;
+                top: 5px;
+                width: 500px;
+                font-size: 2.1em;
+                padding-left: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #pago-ganadores-content {
+    #search_ticket {
+      margin-bottom: 20px;
+    }
+    #search_ticket_result {
+      width: 100%;
+      visibility: hidden;
+      &.show {
+        visibility: visible;
+      }
+    }
+  }
+}
+.title {
+  color: $color-title;
+}
+.btn-success {
+  background-color: #7ed321;
+  border-color: #7ACE20;
+  &:hover {
+    background-color: #74C720;
+  }
+}
+.btn-warning {
+  background-color: #f5a623;
+  border-color: #EEA023;
+  &:hover {
+    background-color: #E79D21;
+  }
+}
+.btn-danger {
+  background-color: #d0021b;
+  border-color: #C7021B;
+  &:hover {
+    background-color: #BC0218;
+  }
+}

@@ -7,6 +7,7 @@ class Usuario extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('url');
+        $this->load->library('comunes_lib');
         if(!$this->session->userdata('idUsuario'))
         	redirect('/login/index', 'refresh');
     }
@@ -17,6 +18,7 @@ class Usuario extends CI_Controller {
 		$this->load->library('table');
 
 		$data['usuarios'] = $this->usuario_model->get_usuarios();
+		$this->load->view('/templates/header');
 		$this->load->view('/usuario/ver_usuarios',$data);
 	}
 
@@ -60,7 +62,8 @@ class Usuario extends CI_Controller {
 		$this->form_validation->set_rules('inputUsuario', 'Usuario', 'required',array('required' => 'Campo de Usuario necesario.'));
 		
         if ($this->form_validation->run() == FALSE)
-        {       	
+        {   
+        	$this->load->view('/templates/header');    	
             $this->load->view('/usuario/manejo_usuario_view',$data);	        	
         }
         else

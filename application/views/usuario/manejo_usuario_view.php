@@ -9,8 +9,8 @@
     
     <!-- CSS principal -->
     <link href="<?php echo base_url(); ?>css/usuario/usuario.css" rel="stylesheet">    
-    <!-- Bootstrap -->
-    <link href="<?php echo base_url(); ?>third_party/bootstrap/css/bootstrap.min.css" rel="stylesheet">    
+    <!-- Bootstrap <link href="<?php echo base_url(); ?>third_party/bootstrap/css/bootstrap.min.css" rel="stylesheet">    -->
+    
   </head>
   <body>
     <div class="container">
@@ -67,8 +67,8 @@
     <!-- Jquery -->
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>    
 
-    <!-- Bootstrap -->
-    <script src="<?php echo base_url(); ?>third_party/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap <script src="<?php echo base_url(); ?>third_party/bootstrap/js/bootstrap.min.js"></script> -->
+    
     <!-- JS principal -->
     <script src="<?php echo base_url(); ?>js/usuario/usuario.js"></script>
   </body>

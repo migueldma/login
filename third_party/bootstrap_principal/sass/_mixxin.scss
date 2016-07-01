@@ -1,0 +1,54 @@
+
+// ==========================================================================
+// Mixxin
+// ==========================
+
+
+
+//Responsive
+
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: 767px) { @content; }
+  }
+ 
+  @else if $class == sm {
+    @media (min-width: 768px) { @content; }
+  }
+ 
+  @else if $class == md {
+    @media (min-width: 992px) { @content; }
+  }
+ 
+  @else if $class == lg {
+    @media (min-width: 1200px) { @content; }
+  }
+ 
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}
+
+// Example
+// header{
+//   width: 50%;
+//   @include breakpoint(sm){
+//     width: 300px;
+//   }
+// }
+
+
+
+// border radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+          background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+//Example
+// div{
+//   @include border-radius(20px);
+// }

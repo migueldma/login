@@ -63,7 +63,7 @@ class Usuario_model extends CI_Model {
     public function editar_usuario($idUsuario,$datos){
     	$data = array(
     		'usuario' => $datos['usuario'],
-    		'credenciales'=> $datos['password'],
+    		//'credenciales'=> $datos['password'],
     		'administradorGlobal'=> $datos['administradorGlobal'],
     		'administradorBancas'=> $datos['administradorBancas'],
     		'administradorPuntoVentas'=> $datos['administradorPuntoVentas'],

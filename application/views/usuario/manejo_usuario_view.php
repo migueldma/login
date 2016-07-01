@@ -24,14 +24,14 @@
               <input type="hidden" name="idUsuario" value="<?php if(isset($idUsuario)) echo $idUsuario;?>">
               <div class   ="form-group">
                 <label for   ="inputUsuario">Usuario</label>
-                <input type  ="user" class="form-control" name = "inputUsuario" id="inputUsuario" placeholder="Usuario" value="<?php echo isset($datosUsuario['usuario'])?$datosUsuario['usuario']:''; ?>">
+                <input type  ="user" class="form-control" name = "inputUsuario" id="inputUsuario" placeholder="Usuario" value="<?php echo isset($datosUsuario['usuario'])?$datosUsuario['usuario']:''; ?>"   >
               </div>
               <div class   ="form-group">
                 <label for   ="inputPassword">Password</label>
-                <input type  ="password" class="form-control" name = "inputPassword" id="inputPassword" placeholder="Password">
+                <input type  ="password" class="form-control" name = "inputPassword" id="inputPassword" placeholder="Password" <?php if(isset($idUsuario)) echo $idUsuario != ''?' disabled':'';  ?>>
               </div>   
               <div class   ="form-group">                
-                <input type  ="password" class="form-control" name = "inputConfirmacionPassword" id="inputConfirmacionPassword" placeholder="Confirme el Password">
+                <input type  ="password" class="form-control" name = "inputConfirmacionPassword" id="inputConfirmacionPassword" placeholder="Confirme el Password" <?php if(isset($idUsuario)) echo $idUsuario != ''?' disabled':'';  ?>>
               </div>
               <div class   ="form-group">
                 <label for   ="selectTipoUsuario">Tipo</label>
